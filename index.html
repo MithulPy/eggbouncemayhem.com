@@ -38,35 +38,37 @@
   .phone::before { left: -2.4%; top: 17%; width: 2.4%; height: 19%; border-radius: 3px 0 0 3px; background: linear-gradient(#5d6068 0 18%, transparent 18% 32%, #5d6068 32% 62%, transparent 62% 70%, #5d6068 70%); }
   .phone::after { right: -2.4%; top: 26%; width: 2.4%; height: 11%; border-radius: 0 3px 3px 0; }
 
-  /* the iPad beside an iPhone Duo that folds and opens when tapped */
-  .showcase { display: flex; justify-content: center; align-items: flex-end; gap: 4%; max-width: 900px; margin: 48px auto 0; }
-  .showcase .tablet { width: 33%; margin: 0; padding: 1.4%; flex: none; }
-  .duo3d { width: 59%; flex: none; perspective: 1800px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  /* the iPad, an iPhone, and an iPhone Duo that folds and opens when tapped */
+  .showcase { display: flex; justify-content: center; align-items: flex-end; gap: 3.5%; max-width: 960px; margin: 48px auto 0; }
+  .showcase .tablet { width: 26%; margin: 0; padding: 1.2%; flex: none; }
+  .showcase .phone { width: 13.5%; flex: none; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); }
+  .duo3d { width: 50%; flex: none; perspective: 1800px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
   .duo3d:focus-visible { outline: 3px solid var(--yolk); outline-offset: 8px; border-radius: 18px; }
   .duo-stage { position: relative; width: 100%; aspect-ratio: 2853 / 2007; transform-style: preserve-3d; transition: transform .9s cubic-bezier(.65,.05,.25,1); }
-  .duo3d.folded .duo-stage { transform: translateX(25%); }
-  .half { position: absolute; top: 0; width: 50%; height: 100%; }
-  .half.left { left: 0; background: #0b0b0d; border-radius: 14px 0 0 14px; }
-  /* the outline of the whole open phone (each half drawing its own met at the hinge as a thick seam) */
+  /* folded, the phone is the right half: slide it back to the middle */
+  .duo3d.folded .duo-stage { transform: translateX(-25%); }
+  /* the outline of the whole open phone, so the hinge shows no seam */
   .frame { position: absolute; inset: 0; border-radius: 14px; background: #0b0b0d; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); transform: translateZ(-1px); transition: opacity .5s .35s; }
-  .duo3d.folded .frame { opacity: 0; transition: opacity .25s; }
-  .half.right { left: 50%; transform-origin: left center; transform-style: preserve-3d; transform: translateZ(1px); transition: transform .9s cubic-bezier(.65,.05,.25,1); }
-  .duo3d.folded .half.right { transform: translateZ(1px) rotateY(-180deg); }
+  .duo3d.folded .frame { opacity: 0; transition: opacity .08s; }
+  .half { position: absolute; top: 0; width: 50%; height: 100%; }
+  .half.right { left: 50%; background: #0b0b0d; border-radius: 0 14px 14px 0; }
+  /* the left half swings over onto the right, about the hinge */
+  .half.left { left: 0; transform-origin: right center; transform-style: preserve-3d; transform: translateZ(1px); transition: transform .9s cubic-bezier(.65,.05,.25,1); }
+  .duo3d.folded .half.left { transform: translateZ(1px) rotateY(180deg); }
   .face { position: absolute; inset: 0; background: #0b0b0d; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-  .face.front { border-radius: 0 14px 14px 0; }
+  .face.front { border-radius: 14px 0 0 14px; }
   .face.back { transform: rotateY(180deg); border-radius: 14px; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); }
   .scr { position: absolute; background-repeat: no-repeat; }
-  .half.left .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: 0; border-radius: 9px 0 0 9px; background: url(shots/duo_open.jpg) 0 0 / 200% 100%; }
-  .face.front .scr { top: 3.2%; bottom: 3.2%; left: 0; right: 4.4%; border-radius: 0 9px 9px 0; background: url(shots/duo_open.jpg) 100% 0 / 200% 100%; }
-  .face.back .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: 4.4%; border-radius: 9px; background: url(shots/duo_folded.jpg) center / cover; }
+  /* the two halves of the inner screen meet with no gap or line */
+  .face.front .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: -1px; border-radius: 9px 0 0 9px; background: url(shots/duo_open_v2.jpg) 0 0 / 200% 100%; }
+  .half.right .scr { top: 3.2%; bottom: 3.2%; left: -1px; right: 4.4%; border-radius: 0 9px 9px 0; background: url(shots/duo_open_v2.jpg) 100% 0 / 200% 100%; }
+  .face.back .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: 4.4%; border-radius: 9px; background: url(shots/duo_folded_v2.jpg) center / cover; }
   .face.back .hole { position: absolute; top: 5.5%; right: 11%; width: 5.5%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34405e, #07080c 65%); }
-  .crease { position: absolute; top: 3.2%; bottom: 3.2%; left: 50%; width: 2px; transform: translateX(-50%) translateZ(2px); background: linear-gradient(90deg, rgba(0,0,0,.1), rgba(255,255,255,.18), rgba(0,0,0,.1)); transition: opacity .3s; }
-  .duo3d.folded .crease { opacity: 0; }
   .fold-row { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
   .fold-btn { font: inherit; font-weight: 800; font-size: 16px; background: transparent; color: #fff; border: 3px solid var(--yolk); border-radius: 999px; padding: 9px 20px; cursor: pointer; }
   .fold-btn:hover { background: rgba(255,194,26,.15); }
   .devices-note { margin: 0 !important; font-size: 16px !important; color: #b9c2e0 !important; }
-  @media (prefers-reduced-motion: reduce) { .duo-stage, .half.right, .crease { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .duo-stage, .half.left, .frame { transition: none; } }
 
   main { max-width: 900px; margin: 0 auto; padding: 36px 16px 24px; }
   h2 { text-align: center; font-size: clamp(26px, 5vw, 34px); margin: 30px 0 18px; }
@@ -90,22 +92,22 @@
   <span class="badge">Coming soon to iPhone and iPad</span>
 
   <div class="showcase">
-    <div class="device tablet"><img src="shots/ipad_gameplay.jpg" width="840" height="1120" alt="Egg Bounce Mayhem filling an iPad screen"><span class="cam"></span></div>
+    <div class="device tablet"><img src="shots/ipad_gameplay_v2.jpg" width="840" height="1120" alt="Egg Bounce Mayhem filling an iPad screen"><span class="cam"></span></div>
+    <div class="device phone"><img src="shots/iphone_gameplay_v2.jpg" width="480" height="1043" alt="Egg Bounce Mayhem on iPhone"><span class="island"></span></div>
     <div class="duo3d" id="duo" role="button" tabindex="0" aria-pressed="false" aria-label="iPhone Duo showing Egg Bounce Mayhem. Tap to fold or open it.">
       <div class="duo-stage">
         <div class="frame"></div>
-        <div class="half left"><div class="scr"></div></div>
-        <div class="half right">
+        <div class="half left">
           <div class="face front"><div class="scr"></div></div>
           <div class="face back"><div class="scr"></div><span class="hole"></span></div>
         </div>
-        <div class="crease"></div>
+        <div class="half right"><div class="scr"></div></div>
       </div>
     </div>
   </div>
   <div class="fold-row">
-    <button class="fold-btn" id="foldBtn" type="button">Fold it</button>
-    <p class="devices-note">Tap the iPhone Duo to fold it. On iPad and the Duo, folded or open, the game fills the screen.</p>
+    <button class="fold-btn" id="foldBtn" type="button">Fold the Duo</button>
+    <p class="devices-note">Made for iPhone, iPad and the foldable iPhone Duo. Tap the Duo to fold it.</p>
   </div>
 </section>
 <main>
@@ -135,7 +137,7 @@
     function toggle() {
       var folded = duo.classList.toggle("folded");
       duo.setAttribute("aria-pressed", folded ? "true" : "false");
-      btn.textContent = folded ? "Open it" : "Fold it";
+      btn.textContent = folded ? "Open the Duo" : "Fold the Duo";
     }
     duo.addEventListener("click", toggle);
     btn.addEventListener("click", toggle);
