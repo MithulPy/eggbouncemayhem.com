@@ -40,8 +40,9 @@
 
   /* the iPad, an iPhone, and an iPhone Duo that folds and opens when tapped */
   .showcase { display: flex; justify-content: center; align-items: flex-end; gap: 3.5%; max-width: 960px; margin: 48px auto 0; }
-  .showcase .tablet { width: 26%; margin: 0; padding: 1.2%; flex: none; }
-  .showcase .phone { width: 13.5%; flex: none; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); }
+  .showcase .tablet { width: 26%; margin: 0; padding: clamp(3px, .9%, 9px); flex: none; }
+  /* padding in % would be of the whole row: a fixed bezel, as thin as the iPad's */
+  .showcase .phone { width: 13.5%; flex: none; padding: clamp(2px, .55%, 6px); border-radius: 16% / 7.4%; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); }
   .duo3d { width: 50%; flex: none; perspective: 1800px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
   .duo3d:focus-visible { outline: 3px solid var(--yolk); outline-offset: 8px; border-radius: 18px; }
   .duo-stage { position: relative; width: 100%; aspect-ratio: 2853 / 2007; transform-style: preserve-3d; transition: transform .9s cubic-bezier(.65,.05,.25,1); }
@@ -60,9 +61,9 @@
   .face.back { transform: rotateY(180deg); border-radius: 14px; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); }
   .scr { position: absolute; background-repeat: no-repeat; }
   /* the two halves of the inner screen meet with no gap or line */
-  .face.front .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: -1px; border-radius: 9px 0 0 9px; background: url(shots/duo_open_v2.jpg) 0 0 / 200% 100%; }
-  .half.right .scr { top: 3.2%; bottom: 3.2%; left: -1px; right: 4.4%; border-radius: 0 9px 9px 0; background: url(shots/duo_open_v2.jpg) 100% 0 / 200% 100%; }
-  .face.back .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: 4.4%; border-radius: 9px; background: url(shots/duo_folded_v2.jpg) center / cover; }
+  .face.front .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: -1px; border-radius: 9px 0 0 9px; background: url(shots/duo_open_v3.jpg) 0 0 / 200% 100%; }
+  .half.right .scr { top: 3.2%; bottom: 3.2%; left: -1px; right: 4.4%; border-radius: 0 9px 9px 0; background: url(shots/duo_open_v3.jpg) 100% 0 / 200% 100%; }
+  .face.back .scr { top: 3.2%; bottom: 3.2%; left: 4.4%; right: 4.4%; border-radius: 9px; background: url(shots/duo_folded_v3.jpg) center / cover; }
   .face.back .hole { position: absolute; top: 5.5%; right: 11%; width: 5.5%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34405e, #07080c 65%); }
   .fold-row { display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
   .fold-btn { font: inherit; font-weight: 800; font-size: 16px; background: transparent; color: #fff; border: 3px solid var(--yolk); border-radius: 999px; padding: 9px 20px; cursor: pointer; }
@@ -92,8 +93,8 @@
   <span class="badge">Coming soon to iPhone and iPad</span>
 
   <div class="showcase">
-    <div class="device tablet"><img src="shots/ipad_gameplay_v2.jpg" width="840" height="1120" alt="Egg Bounce Mayhem filling an iPad screen"><span class="cam"></span></div>
-    <div class="device phone"><img src="shots/iphone_gameplay_v2.jpg" width="480" height="1043" alt="Egg Bounce Mayhem on iPhone"><span class="island"></span></div>
+    <div class="device tablet"><img src="shots/ipad_gameplay_v3.jpg" width="840" height="1120" alt="Egg Bounce Mayhem filling an iPad screen"><span class="cam"></span></div>
+    <div class="device phone"><img src="shots/iphone_gameplay_v3.jpg" width="480" height="1043" alt="Egg Bounce Mayhem on iPhone"><span class="island"></span></div>
     <div class="duo3d" id="duo" role="button" tabindex="0" aria-pressed="false" aria-label="iPhone Duo showing Egg Bounce Mayhem. Tap to fold or open it.">
       <div class="duo-stage">
         <div class="frame"></div>
