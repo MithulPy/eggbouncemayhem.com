@@ -20,7 +20,11 @@
   .badge { display: inline-block; margin-top: 26px; background: var(--yolk); color: var(--ink); font-weight: 800; padding: 14px 26px; border-radius: 999px; border: 4px solid var(--ink); text-decoration: none; }
 
   /* today's iPad and iPhone, drawn here (no Apple artwork), with real screenshots inside */
-  .showcase { position: relative; max-width: 680px; margin: 48px auto 0; }
+  /* the iPad, and the iPhone Duo folded and open: the open Duo is as tall as the folded one,
+     twice as wide (it opens like a book). Padding in % is of the showcase's width for all
+     three, so the two Duos' heights match exactly. */
+  .showcase { position: relative; max-width: 880px; margin: 48px auto 0; aspect-ratio: 100 / 60; }
+  .showcase .device { position: absolute; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 24px 50px rgba(0,0,0,.5); }
   .device { position: relative; background: #0b0b0d; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 28px 60px rgba(0,0,0,.45); }
   .device img { display: block; width: 100%; height: auto; }
   .device::before, .device::after { content: ""; position: absolute; background: #5d6068; }
@@ -37,7 +41,20 @@
   .phone .island::after { content: ""; position: absolute; right: 9%; top: 22%; height: 56%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34405e, #07080c 65%); }
   .phone::before { left: -2.4%; top: 17%; width: 2.4%; height: 19%; border-radius: 3px 0 0 3px; background: linear-gradient(#5d6068 0 18%, transparent 18% 32%, #5d6068 32% 62%, transparent 62% 70%, #5d6068 70%); }
   .phone::after { right: -2.4%; top: 26%; width: 2.4%; height: 11%; border-radius: 0 3px 3px 0; }
-  .showcase .phone { position: absolute; right: 6%; bottom: -7%; width: 29%; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, -12px 26px 50px rgba(0,0,0,.55); }
+  .showcase .tablet { left: 20%; top: 0; width: 41%; margin: 0; padding: 1.1%; }
+  /* the Duo folded: its outer screen, the punch-hole camera top right, the hinge down the left */
+  .duo-fold { left: 0; bottom: 0; width: 25.3%; padding: 1.1%; border-radius: 12% / 8.3%; }
+  .duo-fold img { border-radius: 8% / 5.5%; }
+  .duo-fold .hole { position: absolute; top: 3.6%; right: 9%; width: 6.5%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34405e, #07080c 65%); }
+  .duo-fold::before { left: -6px; top: 4%; bottom: 4%; width: 6px; border-radius: 4px 0 0 4px; background: linear-gradient(90deg, #26282d, #61646c); }
+  .duo-fold::after { right: -4px; top: 20%; width: 4px; height: 12%; border-radius: 0 3px 3px 0; }
+  /* the Duo open, held sideways: the crease down the middle */
+  .duo-open { right: 0; bottom: 0; width: 50%; padding: 1.1%; border-radius: 6% / 8.6%; }
+  .duo-open img { border-radius: 4% / 5.7%; }
+  .duo-open .crease { position: absolute; top: 2.2%; bottom: 2.2%; left: 50%; width: 3px; transform: translateX(-50%); background: linear-gradient(90deg, rgba(0,0,0,.18), rgba(255,255,255,.22), rgba(0,0,0,.18)); }
+  .duo-open::before { display: none; }
+  .duo-open::after { top: -4px; right: 14%; width: 8%; height: 4px; border-radius: 3px 3px 0 0; }
+  .devices-note { margin-top: 30px !important; font-size: 16px !important; color: #b9c2e0 !important; }
 
   main { max-width: 900px; margin: 0 auto; padding: 36px 16px 24px; }
   h2 { text-align: center; font-size: clamp(26px, 5vw, 34px); margin: 30px 0 18px; }
@@ -49,24 +66,6 @@
   .shots figure { margin: 0; text-align: center; }
   .shots .phone { width: 88%; max-width: 190px; margin: 0 auto; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 14px 28px rgba(43,29,14,.28); }
   .shots figcaption { margin-top: 12px; font-weight: 700; font-size: 16px; }
-  /* the iPhone Duo foldable: folded (the outer screen) and open (held sideways, book-style, with the crease) */
-  .lede { text-align: center; color: var(--soft); max-width: 620px; margin: -6px auto 22px; }
-  .duo { display: flex; justify-content: center; align-items: flex-end; gap: 28px; flex-wrap: wrap; margin: 6px 0 4px; }
-  .duo figure { margin: 0; text-align: center; }
-  .duo figcaption { margin-top: 12px; font-weight: 700; font-size: 16px; }
-  .duo .f-fold { width: 190px; }
-  .duo .f-open { width: min(300px, 100%); }
-  .folded { width: 100%; padding: 7px; border-radius: 13% / 9%; }
-  .folded img { border-radius: 9% / 6.2%; }
-  .folded .cam { position: absolute; top: 4.5%; left: 9%; width: 4.5%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34405e, #07080c 65%); }
-  .folded::after { right: -4px; top: 22%; width: 4px; height: 14%; border-radius: 0 3px 3px 0; }
-  .folded::before { display: none; }
-  .open { width: 100%; padding: 9px; border-radius: 7% / 5%; }
-  .open img { border-radius: 4.4% / 3.1%; }
-  .open .crease { position: absolute; left: 9px; right: 9px; top: 50%; height: 3px; transform: translateY(-50%); background: linear-gradient(180deg, rgba(0,0,0,.16), rgba(255,255,255,.2), rgba(0,0,0,.16)); }
-  .open::after { right: -4px; top: 12%; width: 4px; height: 9%; border-radius: 0 3px 3px 0; }
-  .open::before { display: none; }
-  .duo .device { box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 16px 32px rgba(43,29,14,.28); }
   footer { text-align: center; color: var(--soft); font-size: 15px; padding: 28px 16px 44px; border-top: 2px solid var(--line); margin-top: 28px; }
   footer a { color: #a35a00; margin: 0 8px; }
 </style>
@@ -80,8 +79,10 @@
 
   <div class="showcase">
     <div class="device tablet"><img src="shots/ipad_gameplay.jpg" width="840" height="1120" alt="Egg Bounce Mayhem filling an iPad screen, frying pans and plates flying across the kitchen"><span class="cam"></span></div>
-    <div class="device phone"><img src="shots/iphone_gameplay.jpg" width="480" height="1043" alt="Egg Bounce Mayhem on iPhone: a 10 pickup combo in the kitchen"><span class="island"></span></div>
+    <div class="device duo-fold"><img src="shots/duo_folded.jpg" width="460" height="669" alt="Egg Bounce Mayhem on a folded iPhone Duo"><span class="hole"></span></div>
+    <div class="device duo-open"><img src="shots/duo_open.jpg" width="1100" height="774" alt="Egg Bounce Mayhem filling an open iPhone Duo held sideways"><span class="crease"></span></div>
   </div>
+  <p class="devices-note">On iPad and the foldable iPhone Duo, folded or open, the game grows to fill the screen.</p>
 </section>
 <main>
   <div class="grid">
@@ -89,13 +90,6 @@
     <div class="card"><h3>Collect 70+ eggs</h3><p>Unlock eggs as you level up, earn skill eggs by surviving longer, and catch a limited egg every week.</p></div>
     <div class="card"><h3>Climb the leaderboards</h3><p>World and weekly boards, daily missions and 18 trophies to chase.</p></div>
     <div class="card"><h3>No ads, no tracking</h3><p>Just the game. Optional gems if you want them.</p></div>
-  </div>
-
-  <h2>Plays on every screen</h2>
-  <p class="lede">iPhone, iPad and the new foldable iPhone Duo, folded or open. On bigger screens the game itself grows to fill the screen, balanced so every device plays just as fair.</p>
-  <div class="duo">
-    <figure class="f-fold"><div class="device folded"><img src="shots/duo_folded.jpg" width="460" height="669" loading="lazy" alt="Egg Bounce Mayhem on a folded iPhone Duo"><span class="cam"></span></div><figcaption>iPhone Duo, folded</figcaption></figure>
-    <figure class="f-open"><div class="device open"><img src="shots/duo_open.jpg" width="700" height="995" loading="lazy" alt="Egg Bounce Mayhem filling the open iPhone Duo screen"><span class="crease"></span></div><figcaption>iPhone Duo, open</figcaption></figure>
   </div>
 
   <h2>Inside the game</h2>
