@@ -49,6 +49,24 @@
   .shots figure { margin: 0; text-align: center; }
   .shots .phone { width: 88%; max-width: 190px; margin: 0 auto; box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 14px 28px rgba(43,29,14,.28); }
   .shots figcaption { margin-top: 12px; font-weight: 700; font-size: 16px; }
+  /* the iPhone Duo foldable: folded (the outer screen) and open (held sideways, book-style, with the crease) */
+  .lede { text-align: center; color: var(--soft); max-width: 620px; margin: -6px auto 22px; }
+  .duo { display: flex; justify-content: center; align-items: flex-end; gap: 28px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .duo figure { margin: 0; text-align: center; }
+  .duo figcaption { margin-top: 12px; font-weight: 700; font-size: 16px; }
+  .duo .f-fold { width: 190px; }
+  .duo .f-open { width: min(560px, 100%); }
+  .folded { width: 100%; padding: 7px; border-radius: 13% / 9%; }
+  .folded img { border-radius: 9% / 6.2%; }
+  .folded .cam { position: absolute; top: 4.5%; left: 9%; width: 4.5%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #34405e, #07080c 65%); }
+  .folded::after { right: -4px; top: 22%; width: 4px; height: 14%; border-radius: 0 3px 3px 0; }
+  .folded::before { display: none; }
+  .open { width: 100%; padding: 10px; border-radius: 4.5% / 6.4%; }
+  .open img { border-radius: 2.6% / 3.7%; }
+  .open .crease { position: absolute; top: 10px; bottom: 10px; left: 50%; width: 3px; transform: translateX(-50%); background: linear-gradient(90deg, rgba(0,0,0,.18), rgba(255,255,255,.22), rgba(0,0,0,.18)); }
+  .open::after { top: -4px; right: 14%; width: 9%; height: 4px; border-radius: 3px 3px 0 0; }
+  .open::before { display: none; }
+  .duo .device { box-shadow: 0 0 0 2px #6d7079, 0 0 0 4px #2c2e33, 0 16px 32px rgba(43,29,14,.28); }
   footer { text-align: center; color: var(--soft); font-size: 15px; padding: 28px 16px 44px; border-top: 2px solid var(--line); margin-top: 28px; }
   footer a { color: #a35a00; margin: 0 8px; }
 </style>
@@ -71,6 +89,13 @@
     <div class="card"><h3>Collect 70+ eggs</h3><p>Unlock eggs as you level up, earn skill eggs by surviving longer, and catch a limited egg every week.</p></div>
     <div class="card"><h3>Climb the leaderboards</h3><p>World and weekly boards, daily missions and 18 trophies to chase.</p></div>
     <div class="card"><h3>No ads, no tracking</h3><p>Just the game. Optional gems if you want them.</p></div>
+  </div>
+
+  <h2>Plays on every screen</h2>
+  <p class="lede">iPhone, iPad and the new foldable iPhone Duo, folded or open. The kitchen stretches to fill the screen, and the game stays just as fair.</p>
+  <div class="duo">
+    <figure class="f-fold"><div class="device folded"><img src="shots/duo_folded.jpg" width="460" height="669" loading="lazy" alt="Egg Bounce Mayhem on a folded iPhone Duo"><span class="cam"></span></div><figcaption>iPhone Duo, folded</figcaption></figure>
+    <figure class="f-open"><div class="device open"><img src="shots/duo_open.jpg" width="1100" height="774" loading="lazy" alt="Egg Bounce Mayhem on an open iPhone Duo, the kitchen filling the wide screen"><span class="crease"></span></div><figcaption>iPhone Duo, open</figcaption></figure>
   </div>
 
   <h2>Inside the game</h2>
