@@ -12,6 +12,9 @@
   body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
   header { background: var(--yolk); padding: 28px 16px; text-align: center; border-bottom: 4px solid var(--ink); }
   header h1 { margin: 0; font-size: 28px; }
+  header h1 a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
+  header h1 a:hover span, header h1 a:focus-visible span { text-decoration: underline; }
+  header h1 img { width: 40px; height: 40px; border-radius: 22.37%; box-shadow: 0 3px 0 rgba(0,0,0,.2); }
   header p { margin: 6px 0 0; color: var(--ink); }
   main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
   h2 { font-size: 21px; margin: 32px 0 8px; padding-bottom: 4px; border-bottom: 2px solid var(--line); }
@@ -24,7 +27,7 @@
 </head>
 <body>
 <header>
-  <h1>Egg Bounce Mayhem</h1>
+  <h1><a href="./" title="Back to the home page"><img src="apple-touch-icon.png" width="40" height="40" alt=""><span>Egg Bounce Mayhem</span></a></h1>
   <p>Privacy Policy</p>
 </header>
 <main>
@@ -76,6 +79,6 @@
   <h2>Contact</h2>
   <p>Mithul Koshy<br>Email: <a href="mailto:mitikosstore@gmail.com">mitikosstore@gmail.com</a></p>
 </main>
-<footer>&copy; 2026 Mithul Koshy &middot; <a href="support.html">Support</a></footer>
+<footer>&copy; 2026 Mithul Koshy &middot; <a href="./">Home</a> &middot; <a href="support.html">Support</a></footer>
 </body>
 </html>
